@@ -13,5 +13,6 @@ export default createGlobalStyle`
     }
     body{
         background-color:blueviolet;
+        padding:50px;
     }
 `;

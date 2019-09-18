@@ -1,6 +1,7 @@
 import GlobalStyle from "./styles/globalStyle";
-import React, { Component } from "react";
+
 import AddNewRepo from "./components/addNewRepo/index";
+import React, { Component } from "react";
 class App extends Component {
   render() {
     return (

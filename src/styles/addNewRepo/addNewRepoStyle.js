@@ -10,6 +10,7 @@ export const DivInput = styled.div`
     flex: 1;
     background-color: #eee;
     border: none;
+    color: black;
   }
   input {
     height: 30px;
@@ -33,12 +34,16 @@ export const DivTitle = styled.div`
     margin-right: 10px;
   }
   h1 {
+    @media screen and (max-width: 500px) {
+      font-size: 22px;
+    }
     font-size: 27px;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   }
 `;
 
 export const Container = styled.div`
+  border-radius: 10px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

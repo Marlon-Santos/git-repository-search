@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const DivInput = styled.div`
+export const DivInput = styled.form`
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -11,6 +11,7 @@ export const DivInput = styled.div`
     background-color: #eee;
     border: none;
     color: purple;
+    padding: 10px 15px;
   }
   input {
     height: 30px;

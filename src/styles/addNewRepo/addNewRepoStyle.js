@@ -65,6 +65,7 @@ export const Container = styled.div`
   max-width: 100%;
   padding: 30px;
   margin-bottom: 50px;
+  overflow: auto;
   @media screen and (max-width: 285px) {
     padding: 30px 0;
   }

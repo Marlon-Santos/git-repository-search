@@ -1,6 +1,14 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-export const DivInput = styled.form`
+const frame = keyframes`
+from{
+  transform:rotate(0deg)
+}to{
+  transform:rotate(360deg)
+}
+`;
+
+export const DivInput = styled.form.attrs(props => ({}))`
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -21,6 +29,11 @@ export const DivInput = styled.form`
     color: white;
     border: transparent;
     border-radius: 5px;
+    &:disabled {
+      background-color: rgba(138, 43, 226, 0.7);
+      animation: ${frame} 2s linear infinite;
+      cursor: not-allowed;
+    }
   }
 `;
 
@@ -51,6 +64,7 @@ export const Container = styled.div`
   width: 700px;
   max-width: 100%;
   padding: 30px;
+  margin-bottom: 50px;
   @media screen and (max-width: 285px) {
     padding: 30px 0;
   }

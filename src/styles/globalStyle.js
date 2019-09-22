@@ -14,7 +14,7 @@ export default createGlobalStyle`
     body{
         background-color:blueviolet;
         padding:50px;
-        @media screen and (max-width: 400px) {
+        @media screen and (max-width: 465px) {
             padding:50px 0;
   }
     }

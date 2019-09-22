@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, DivInput } from "../../styles/addNewRepo/addNewRepoStyle";
-import { DivTitle } from "../../styles/addNewRepo/addNewRepoStyle";
+import { DivTitle, Ul } from "../../styles/addNewRepo/addNewRepoStyle";
 import GitLogo from "../../assets/gitLogo.png";
 import api from "../../server/gitApi";
 
@@ -25,15 +25,14 @@ class AddNewRepo extends Component {
   componentDidUpdate(_, prevState) {
     if (this.state.newRepo !== prevState.newRepo && this.state.newRepo !== "") {
       this.setState({ loading: true });
-      const test = async () => {
+      const getRepo = async () => {
         try {
-          const ok = await api.get(this.state.newRepo + "/repos");
-          return ok;
+          return await api.get(this.state.newRepo + "/repos");
         } catch (e) {
           return e;
         }
       };
-      test().then(resolve => {
+      getRepo().then(resolve => {
         if (resolve.request.status === 200) {
           resolve.data.map(item => {
             return this.setState({ repo: [...this.state.repo, item.name] });
@@ -59,14 +58,6 @@ class AddNewRepo extends Component {
             <img src={GitLogo} alt="git logo" />
             <h1>Repositórios:</h1>
           </DivTitle>
-          {this.state.repo.map((item, index) => {
-            return <h3 key={index * 100}>{item}</h3>;
-          })}
-          {this.state.error === true ? (
-            <h3>Erro repositorio não encontrado</h3>
-          ) : (
-            false
-          )}
           <DivInput
             onSubmit={e => {
               this.adicionarRepo(e);
@@ -81,6 +72,20 @@ class AddNewRepo extends Component {
             />
             <input type="submit" value="+" disabled={this.state.loading} />
           </DivInput>
+          <Ul>
+            {this.state.repo.map((item, index) => {
+              return (
+                <>
+                  <li key={index * 100}>{item}</li>
+                  <a href="#detalhes">Detalhes</a>
+                  <span></span>
+                </>
+              );
+            })}
+            {this.state.error === true && (
+              <li>Erro repositorio não encontrado</li>
+            )}
+          </Ul>
         </Container>
       </>
     );

@@ -10,7 +10,8 @@ class AddNewRepo extends Component {
     repo: [],
     error: false,
     place: "Add a nick name from GitHub EX:marlon-santos",
-    width: window.innerWidth
+    width: window.innerWidth,
+    user: []
   };
   adicionarRepo = e => {
     e.preventDefault();
@@ -34,10 +35,11 @@ class AddNewRepo extends Component {
       };
       getRepo().then(resolve => {
         if (resolve.request.status === 200) {
-          resolve.data.map(item => {
-            return this.setState({ repo: [...this.state.repo, item.name] });
+          const res = resolve.data.map(item => {
+            return item.name;
           });
-
+          this.setState({ repo: [...this.state.repo, res] });
+          this.setState({ user: [...this.state.user, this.state.newRepo] });
           this.setState({ newRepo: "" });
           this.setState({ error: false });
           this.setState({ loading: false });
@@ -72,16 +74,28 @@ class AddNewRepo extends Component {
             />
             <input type="submit" value="+" disabled={this.state.loading} />
           </DivInput>
+          {this.state.user.length >= 1 && (
+            <div
+              style={{ width: "100%", textAlign: "center", marginTop: "25px" }}
+            >
+              {"Repositorios do "}
+
+              <h2>{this.state.user[this.state.user.length - 1] + ":"}</h2>
+            </div>
+          )}
           <Ul>
-            {this.state.repo.map((item, index) => {
-              return (
-                <>
-                  <li key={index * 100}>{item}</li>
-                  <a href="#detalhes">Detalhes</a>
-                  <span></span>
-                </>
-              );
-            })}
+            {this.state.repo.length >= 1 &&
+              this.state.repo[this.state.repo.length - 1].map(item => {
+                return (
+                  <>
+                    <li key={item}>{item}</li>
+                    <a href="#detalhes" key={item + "detalhes"}>
+                      Detalhes
+                    </a>
+                    <span key={item + "span"}></span>
+                  </>
+                );
+              })}
             {this.state.error === true && (
               <li>Erro repositorio não encontrado</li>
             )}

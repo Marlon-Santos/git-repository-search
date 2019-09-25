@@ -77,31 +77,3 @@ export const Container = styled.div`
     padding: 30px 0;
   }
 `;
-export const Ul = styled.div`
-  list-style-type: none;
-  padding: 25px 15px 0 15px;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  flex-wrap: wrap;
-  align-content: space-between;
-  justify-items: center;
-  li {
-    padding: 10px 0;
-    overflow: auto;
-    width: calc(100% - 100px);
-    white-space: nowrap;
-  }
-  a {
-    text-decoration: none;
-    padding: 10px 0;
-    font-size: 16px;
-    text-align: right;
-    flex: 1;
-  }
-  span {
-    & + li + a + span {
-      border-top: 1px solid #ddd;
-    }
-  }
-`;

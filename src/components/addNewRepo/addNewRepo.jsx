@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+
 import { Container, DivInput } from "../../styles/addNewRepo/addNewRepoStyle";
-import { DivTitle, Ul } from "../../styles/addNewRepo/addNewRepoStyle";
+import { DivTitle } from "../../styles/addNewRepo/addNewRepoStyle";
 import GitLogo from "../../assets/gitLogo.png";
 import api from "../../server/gitApi";
-
+import List from "../listRepository/listRepository";
 class AddNewRepo extends Component {
   state = {
     newRepo: "",
@@ -83,23 +84,7 @@ class AddNewRepo extends Component {
               <h2>{this.state.user[this.state.user.length - 1] + ":"}</h2>
             </div>
           )}
-          <Ul>
-            {this.state.repo.length >= 1 &&
-              this.state.repo[this.state.repo.length - 1].map(item => {
-                return (
-                  <>
-                    <li key={item}>{item}</li>
-                    <a href="#detalhes" key={item + "detalhes"}>
-                      Detalhes
-                    </a>
-                    <span key={item + "span"}></span>
-                  </>
-                );
-              })}
-            {this.state.error === true && (
-              <li>Erro repositorio não encontrado</li>
-            )}
-          </Ul>
+          <List repo={this.state.repo} error={this.state.error} />
         </Container>
       </>
     );

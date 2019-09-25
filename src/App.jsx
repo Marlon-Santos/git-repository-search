@@ -1,5 +1,5 @@
 import GlobalStyle from "./styles/globalStyle";
-import AddNewRepo from "./components/addNewRepo/index";
+import Router from "./routes";
 
 import React, { Component } from "react";
 class App extends Component {
@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <>
         <GlobalStyle />
-        <AddNewRepo />
+        <Router />
       </>
     );
   }

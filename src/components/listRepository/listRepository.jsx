@@ -16,7 +16,9 @@ class listRepository extends Component {
         )}
         {this.props.error === true && (
           <h2 style={{ width: "100%", textAlign: "center", marginTop: "25px" }}>
-            Erro repositório não encontrado :(
+            {this.props.typeError === "Network Error"
+              ? "Erro de conexão :("
+              : "Erro repositório não encontrado :("}
           </h2>
         )}
         {this.props.repo.length >= 1 &&

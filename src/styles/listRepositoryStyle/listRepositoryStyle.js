@@ -17,7 +17,6 @@ const List = styled.ul`
   }
   a {
     text-decoration: none;
-    padding: 10px 0;
     font-size: 16px;
     text-align: right;
     flex: 1;

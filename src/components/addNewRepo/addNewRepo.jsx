@@ -12,7 +12,8 @@ class AddNewRepo extends Component {
     error: false,
     place: "Add a nick name from GitHub EX:marlon-santos",
     width: window.innerWidth,
-    user: []
+    user: [],
+    typeError: ""
   };
   adicionarRepo = e => {
     e.preventDefault();
@@ -31,6 +32,7 @@ class AddNewRepo extends Component {
         try {
           return await api.get(this.state.newRepo + "/repos");
         } catch (e) {
+          this.setState({ typeError: e.message });
           return e;
         }
       };
@@ -79,6 +81,7 @@ class AddNewRepo extends Component {
             repo={this.state.repo}
             error={this.state.error}
             user={this.state.user}
+            typeError={this.state.typeError}
           />
         </Container>
       </>

@@ -75,16 +75,11 @@ class AddNewRepo extends Component {
             />
             <input type="submit" value="+" disabled={this.state.loading} />
           </DivInput>
-          {this.state.user.length >= 1 && (
-            <div
-              style={{ width: "100%", textAlign: "center", marginTop: "25px" }}
-            >
-              {"Repositorios do "}
-
-              <h2>{this.state.user[this.state.user.length - 1] + ":"}</h2>
-            </div>
-          )}
-          <List repo={this.state.repo} error={this.state.error} />
+          <List
+            repo={this.state.repo}
+            error={this.state.error}
+            user={this.state.user}
+          />
         </Container>
       </>
     );
